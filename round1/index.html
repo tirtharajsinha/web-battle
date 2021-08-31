@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+    <title>xyzPhone</title>
+</head>
+
+<body>
+    <div class="nevbar">
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <h3>xyzPhone</h3>
+            <a href="index.html" onclick="close_on_click()" style="color:aquamarine;"> Home</a>
+            <a href="about.html" onclick="close_on_click()"> About</a>
+            <a href="#project" onclick="close_on_click()"> Contact</a>
+            <a href="#contact" onclick="close_on_click()"> Features</a>
+            <a href="#blog" onclick="blogna();close_on_click();"> Gallary</a>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
+        <button class="openbtn" id="openbtn" onclick="openNav()">
+            <i class="fa fa-bars"></i>
+        </button>
+
+    </div>
+    <div id="pagebody" onclick="close_on_click()">
+
+        <section class="cd-slider">
+            <ul>
+                <li data-color="#222222">
+                    <div class="content" style="background-image:url(https://www.bajajfinserv.in/10_Best_8GB_RAM_Mobile_Phones_in_India_Banner_Best_Phone_with_8GB_RAM_790x345.jpg)">
+                        <blockquote>
+                            <p>Stunning and Beautiful design with planty of features</p>
+                            <span>get yours now - xyzPhone</span>
+                        </blockquote>
+                    </div>
+                </li>
+                <li data-color="#222222">
+                    <div class="content" style="background-image:url(https://mobilephone.com.bd/images/slider/slider-2.jpg)">
+                        <blockquote>
+                            <p>smooth like butter,like criminal under cover</p>
+                            <span>get yours now - xyzPhone</span>
+                        </blockquote>
+                    </div>
+                </li>
+                <li data-color="#002AFF">
+                    <div class="content" style="background-image:url(https://motorolaus.vtexassets.com/assets/vtex.file-manager-graphql/images/802c19a6-b1c7-4a61-8383-de66a2a43cbc___9dbb191a2be9193d19fb1f665d8bab89.jpg)">
+                        <blockquote>
+                            <p>Touch has a memory. so feel power on every touch.</p>
+                            <span>get yours now - xyzPhone</span>
+                        </blockquote>
+                    </div>
+                </li>
+            </ul>
+            <nav>
+                <div>
+                    <a class="prev" href="#"></a>
+                </div>
+                <div>
+                    <a class="next" href="#"></a>
+                </div>
+            </nav>
+        </section>
+        <!-- partial -->
+        <script src="./script.js"></script>
+
+    </div>
+</body>
+
+</html>

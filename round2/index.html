@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="static/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="card.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <script src="script.js"></script>
+    <title>MyDiary</title>
+</head>
+
+<body>
+    <div class="animate" id="animate">
+        <div class="source"></div>
+        <div class="logo-btn">
+            <img class="logo" src="static/diary.png" alt="MyDiary" width="60%" height="auto" />
+        </div>
+    </div>
+    <div id="webpage">
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <h1><i class="diaryicon icon-accessibility"></i><span>MyDiary</span></h1>
+                <a href="#">
+                    <li class="fa fa-sticky-note notes" onclick="nev_click(this)"><span>Notes</span></li>
+                </a>
+                <a href="#">
+                    <li class="fa fa-bell reminder" onclick="nev_click(this)"><span>Reminders</span></li>
+                </a>
+                <a href="#">
+                    <li class="fa fa-edit edit" onclick="nev_click(this)"><span>Edit labels</span></li>
+                </a>
+
+                <a href="#">
+                    <li class="fa fa-file-zip-o archive" onclick="nev_click(this)"><span>Archived</span></li>
+                </a>
+                <a href="#">
+                    <li class="fa fa-info-circle about" onclick="nev_click(this)"><span>About</span></li>
+                </a>
+                <a href="https://tirtharajsinha.github.io">
+                    <li class="fa fa-phone-square contact" onclick="nev_click(this)"><span>Contact</span> </li>
+                </a>
+                <a href="#">
+                    <li class="fa fa-sign-out logout" onclick="nev_click(this)"><span>LogOut</span></li>
+                </a>
+
+
+
+            </ul>
+        </div>
+        <div class="container-box" id="container-box">
+            <form class="entry_cont" id="note-form">
+                <div class="entrynote">
+                    <input type="text" placeholder="Title" id="title" autocomplete="off">
+                    <textarea id="autoresizing" placeholder="Add to your Diary ..." autocomplete="off"></textarea>
+                    <div id="optionbar">
+                        <i class="fa fa-link"></i>
+                        <label for="inputId">
+                            <i class="fa fa-image file-input" title="attch image"><span id="image-conf">Attch
+                                    image</span></i>
+                        </label>
+                        <input id="inputId" type="file" style="display: none;" accept="image/*">
+                        <i class="fa fa-check-circle " id="image-loader" style="color:aquamarine;"><span>image
+                                loaded...</span></i>
+
+                        <i class="fa fa-save" id="save-note" style="color:white;" title="save note"></i>
+                    </div>
+                </div>
+            </form>
+
+            <div class="notes">
+                <div class="card-container" id="card-container">
+                    <div class="card" onclick="enlarge(this)">
+                        <div class="imgBx">
+                            <img src="static/enlarged.png" alt="">
+                        </div>
+                        <div class="content">
+
+                            <h3 class="card-title">Code</h3>
+                            <h2 class="card-date">10.10.2021</h2>
+                            <p class="card-note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel recusandae porro .Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel recusandae porro .
+                            </p>
+                            <p class="card-id">1</p>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="expanded" id="expanded">
+                    <button class="close-expand" onclick="close_expand()">Close</button>
+                    <button class="remove-expand" onclick="remove_expand()">Remove</button>
+                    <h1 id="expand-title">Title</h1>
+                    <h3 id="expand-date">10.10.2021</h3>
+                    <p id="expand-note">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur at officiis quis hic eveniet doloribus ad, repellendus deleniti suscipit officia fugiat dolorum vitae harum reprehenderit magni recusandae! Necessitatibus, placeat
+                        maxime?
+                    </p>
+                    <img src="" alt="" id="expand-img" width="200px" height="auto" style="display: block; margin: auto; margin-top: 10px;">
+                    <p style="color:transparent; width: 0px; height: 0px;" id="expand-delid"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        cur_active = document.getElementsByClassName("notes")[0];
+        cur_active.classList.add("active");
+
+        function nev_click(ele) {
+            cur_active.classList.remove("active");
+            ele.classList.add("active");
+            cur_active = ele;
+        }
+        textarea = document.querySelector("#autoresizing");
+        textarea.addEventListener("input", autoResize, false);
+
+        function autoResize() {
+            this.style.height = "auto";
+            this.style.height = this.scrollHeight + "px";
+        }
+
+        document.getElementById("autoresizing").addEventListener('focus', (event) => {
+            document.getElementById("title").style.display = "block"
+            document.getElementById("optionbar").style.display = "block"
+        });
+        document.getElementById("save-note").addEventListener('click', (event) => {
+            let title = document.getElementById("title");
+            let note = document.getElementById("autoresizing");
+            let option = document.getElementById("optionbar");
+            if (title.value != "" || note.value != "") {
+                console.log("got a note.......");
+                save_note();
+                note.value = "";
+                title.value = "";
+                document.getElementById("inputId").value = "";
+                uploaded_image = "";
+                document.getElementById("image-loader").style.visibility = "hidden";
+                document.getElementById("title").style.display = "none";
+                document.getElementById("optionbar").style.display = "none";
+                note.style.height = "20px";
+
+            } else {
+                document.getElementById("title").style.display = "none";
+                document.getElementById("optionbar").style.display = "none";
+                note.style.height = "20px";
+                uploaded_image = "";
+                document.getElementById("image-loader").style.visibility = "hidden";
+                document.getElementById("title").style.display = "none";
+            }
+
+        });
+
+
+        window.onscroll = function() {
+            scrolltracker();
+        };
+
+        function scrolltracker() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+        let prev_card = "";
+
+        function enlarge(ele) {
+            if (prev_card == "") {
+                prev_card = ele;
+                console.log("set initial");
+            } else {
+                prev_card.getElementsByClassName("imgBx")[0].style.display = "none";
+                prev_card = ele;
+                console.log("change current")
+            }
+            if (window.innerWidth < 750) {
+                ele.getElementsByClassName("imgBx")[0].style.display = "block";
+                document.getElementById("card-container").style.display = "none";
+                document.getElementById("expanded").style.display = "block";
+
+                document.getElementById("expanded").style.width = "100%";
+            } else {
+                ele.getElementsByClassName("imgBx")[0].style.display = "block";
+                document.getElementById("card-container").style.width = "60%";
+                document.getElementById("expanded").style.display = "block";
+                // document.document.getElementById("expanded").style.right = "0px"
+                document.getElementById("expanded").style.width = "40%";
+            }
+            console.log("expanded");
+            document.getElementById("expand-title").innerHTML = ele.getElementsByClassName("card-title")[0].innerHTML;
+            document.getElementById("expand-date").innerHTML = ele.getElementsByClassName("card-date")[0].innerHTML;
+            document.getElementById("expand-note").innerHTML = ele.getElementsByClassName("card-note")[0].innerHTML;
+            document.getElementById("expand-note").innerHTML = ele.getElementsByClassName("card-note")[0].innerHTML;
+            document.getElementById("expand-delid").innerHTML = ele.getElementsByClassName("card-id")[0].innerHTML;
+            document.getElementById("expand-img").src = ele.getElementsByClassName("card-img")[0].src;
+            // console.log(ele.getElementById("card-id").innerHTML);
+        }
+
+        function close_expand() {
+            if (window.innerWidth < 750) {
+                prev_card.getElementsByClassName("imgBx")[0].style.display = "none";
+                document.getElementById("card-container").style.display = "flex";
+                document.getElementById("expanded").style.display = "none";
+                document.getElementById("expanded").style.width = "0%";
+            } else {
+                prev_card.getElementsByClassName("imgBx")[0].style.display = "none";
+                document.getElementById("expanded").style.display = "none";
+                document.getElementById("expanded").style.width = "0%";
+                document.getElementById("card-container").style.width = "100%";
+            }
+
+            prev_card = "";
+            console.log("closed");
+        }
+
+        let uploaded_image = "";
+        document.getElementById("inputId").addEventListener("change", function() {
+
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                // reader.result
+                uploaded_image = reader.result;
+                if (window.innerWidth > 750) {
+                    document.getElementById("image-loader").style.visibility = "visible";
+                }
+            });
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
+</body>
+
+</html>
