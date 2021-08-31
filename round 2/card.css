@@ -1,0 +1,266 @@
+.card-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    height: 70vh;
+}
+
+.card-container .card {
+    position: relative;
+    height: 145px;
+    background: #fff;
+    display: flex;
+    width: 300px;
+    margin: 20px 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card-container .card:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.212);
+}
+
+.card-container .card .imgBx {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+    transition: 0.4s ease-in-out;
+    display: none;
+}
+
+.card-container .card .imgBx img {
+    max-width: 80px;
+    transition: 0.5s ease-in-out;
+    margin: auto;
+    display: block;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.card-container .card .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    /* align-items: center; */
+}
+
+.card-container .card .content h3 {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.card-container .card .content p {
+    color: rgb(133, 133, 133);
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.card-container .card .content a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color: #0095ff;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+    .card-container {
+        position: relative;
+        width: 100%;
+        /* flex-direction: column; */
+        align-items: center;
+        overflow-y: unset;
+    }
+    .card-container .card {
+        width: 300px;
+        height: auto;
+        flex-direction: column;
+        background: transparent;
+        margin: -20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 40px;
+    }
+    .card-container .card .content {
+        position: relative;
+        width: 100%;
+        background: #fff;
+        box-shadow: none;
+        border-radius: 20px;
+        padding: 20px 20px 40px;
+        border-top: 10px solid #fff;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-container .card {
+        width: 250px;
+    }
+    .card-container {
+        margin: 0px;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        top: 100px;
+    }
+    50% {
+        top: 80px;
+    }
+    100% {
+        top: 100px;
+    }
+}
+
+.card-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+.card-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+.card-container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+.card-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#card-id {
+    width: 0;
+    height: 0;
+}
+
+.expanded {
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* width: 40%; */
+    display: none;
+    transition: width 0.3s ease;
+    position: relative;
+    padding: 10px;
+    padding-left: 20px;
+    font-family: "Poppins", sans-serif;
+    border-left: 2px solid rgb(88, 88, 88);
+    background-color: white;
+    z-index: 20;
+}
+
+@media (max-width: 750px) {
+    .expanded {
+        border-left: none;
+    }
+}
+
+
+/* .card-container {
+    width: 60%;
+} */
+
+.close-expand {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 20px;
+    border: none;
+    background-color: none;
+    font-weight: 400;
+    background-color: tomato;
+    border-radius: 30px;
+    padding: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 4px solid tomato;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.close-expand:hover {
+    color: tomato;
+    background-color: white;
+}
+
+.remove-expand {
+    position: absolute;
+    top: 10px;
+    right: 130px;
+    color: red;
+    font-size: 20px;
+    border: none;
+    background-color: none;
+    font-weight: 400;
+    background-color: white;
+    border-radius: 30px;
+    padding: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 4px solid red;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.remove-expand:hover {
+    background-color: red;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(224, 13, 13, 0.2), 0 6px 20px 0 rgba(218, 20, 20, 0.19);
+}
+
+.card-date {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(90, 90, 90);
+}
+
+#expand-date {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(90, 90, 90);
+}
+
+#expand-title {
+    margin-top: 20px;
+    color: rgb(129, 129, 129);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
