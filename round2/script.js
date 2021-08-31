@@ -11,16 +11,8 @@ function save_note() {
     let title = document.getElementById("title").value;
     let note = document.getElementById("autoresizing").value;
     a = new Date();
-    date =
-        a.getDay() +
-        "." +
-        a.getMonth() +
-        "." +
-        a.getYear() +
-        " - " +
-        a.getHours() +
-        ":" +
-        a.getMinutes();
+    date = "[ " + a.getDay() + "." + a.getMonth() + "." + a.getFullYear(); +
+    " - " + a.getHours() + ":" + a.getMinutes() + " ]";
     console.log(title, note);
 
     if (localStorage.getItem("diarybook") == null) {
