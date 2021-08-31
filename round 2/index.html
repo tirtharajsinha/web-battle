@@ -36,14 +36,14 @@
                     <li class="fa fa-sticky-note notes" onclick="nev_click(this)"><span>Notes</span></li>
                 </a>
                 <a href="#">
-                    <li class="fa fa-bell reminder" onclick="nev_click(this)"><span>Reminder</span></li>
+                    <li class="fa fa-bell reminder" onclick="nev_click(this)"><span>Reminders</span></li>
                 </a>
                 <a href="#">
                     <li class="fa fa-edit edit" onclick="nev_click(this)"><span>Edit labels</span></li>
                 </a>
 
                 <a href="#">
-                    <li class="fa fa-file-zip-o archive" onclick="nev_click(this)"><span>Archive</span></li>
+                    <li class="fa fa-file-zip-o archive" onclick="nev_click(this)"><span>Archived</span></li>
                 </a>
                 <a href="#">
                     <li class="fa fa-info-circle about" onclick="nev_click(this)"><span>About</span></li>
@@ -66,11 +66,15 @@
                     <textarea id="autoresizing" placeholder="Add to your Diary ..." autocomplete="off"></textarea>
                     <div id="optionbar">
                         <i class="fa fa-link"></i>
-                        <i class="fa fa-image"></i>
-                        <i class="fa fa-check-circle " id="image-loader" style="color:aquamarine;"><span>image loaded
-                                ...</span></i>
+                        <label for="inputId">
+                            <i class="fa fa-image file-input" title="attch image"><span id="image-conf">Attch
+                                    image</span></i>
+                        </label>
+                        <input id="inputId" type="file" style="display: none;" accept="image/*">
+                        <i class="fa fa-check-circle " id="image-loader" style="color:aquamarine;"><span>image
+                                loaded...</span></i>
 
-                        <i class="fa fa-save" id="save-note" style="color:white;"></i>
+                        <i class="fa fa-save" id="save-note" style="color:white;" title="save note"></i>
                     </div>
                 </div>
             </form>
@@ -82,14 +86,14 @@
                             <img src="static/enlarged.png" alt="">
                         </div>
                         <div class="content">
-                            <div>
-                                <h3 class="card-title">Code</h3>
-                                <h2 class="card-date">10.10.2021</h2>
-                                <p class="card-note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel recusandae porro .Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel recusandae porro .
-                                </p>
-                                <p id="card-id">1</p>
 
-                            </div>
+                            <h3 class="card-title">Code</h3>
+                            <h2 class="card-date">10.10.2021</h2>
+                            <p class="card-note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel recusandae porro .Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel recusandae porro .
+                            </p>
+                            <p class="card-id">1</p>
+
+
                         </div>
                     </div>
 
@@ -104,7 +108,8 @@
                     <p id="expand-note">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur at officiis quis hic eveniet doloribus ad, repellendus deleniti suscipit officia fugiat dolorum vitae harum reprehenderit magni recusandae! Necessitatibus, placeat
                         maxime?
                     </p>
-                    <p style="visibility: hidden; width: 0px; height: 0px;" id="expand-id"></p>
+                    <img src="" alt="" id="expand-img" width="200px" height="auto" style="display: block; margin: auto; margin-top: 10px;">
+                    <p style="color:transparent; width: 0px; height: 0px;" id="expand-delid"></p>
                 </div>
             </div>
 
@@ -138,15 +143,24 @@
             if (title.value != "" || note.value != "") {
                 console.log("got a note.......");
                 save_note();
+                note.value = "";
+                title.value = "";
+                document.getElementById("inputId").value = "";
+                uploaded_image = "";
+                document.getElementById("image-loader").style.visibility = "hidden";
                 document.getElementById("title").style.display = "none";
                 document.getElementById("optionbar").style.display = "none";
-                note.value = "";
                 note.style.height = "20px";
+
             } else {
                 document.getElementById("title").style.display = "none";
                 document.getElementById("optionbar").style.display = "none";
-                note.value = "";
+                note.style.height = "20px";
+                uploaded_image = "";
+                document.getElementById("image-loader").style.visibility = "hidden";
+                document.getElementById("title").style.display = "none";
             }
+
         });
 
 
@@ -177,11 +191,13 @@
                 ele.getElementsByClassName("imgBx")[0].style.display = "block";
                 document.getElementById("card-container").style.display = "none";
                 document.getElementById("expanded").style.display = "block";
+
                 document.getElementById("expanded").style.width = "100%";
             } else {
                 ele.getElementsByClassName("imgBx")[0].style.display = "block";
                 document.getElementById("card-container").style.width = "60%";
                 document.getElementById("expanded").style.display = "block";
+                // document.document.getElementById("expanded").style.right = "0px"
                 document.getElementById("expanded").style.width = "40%";
             }
             console.log("expanded");
@@ -189,8 +205,9 @@
             document.getElementById("expand-date").innerHTML = ele.getElementsByClassName("card-date")[0].innerHTML;
             document.getElementById("expand-note").innerHTML = ele.getElementsByClassName("card-note")[0].innerHTML;
             document.getElementById("expand-note").innerHTML = ele.getElementsByClassName("card-note")[0].innerHTML;
-            document.getElementById("expand-id").innerHTML = ele.getElementById("card-id").innerHTML;
-            console.log(ele.getElementById("card-id").innerHTML);
+            document.getElementById("expand-delid").innerHTML = ele.getElementsByClassName("card-id")[0].innerHTML;
+            document.getElementById("expand-img").src = ele.getElementsByClassName("card-img")[0].src;
+            // console.log(ele.getElementById("card-id").innerHTML);
         }
 
         function close_expand() {
@@ -207,8 +224,22 @@
             }
 
             prev_card = "";
-            console.log("cleared");
+            console.log("closed");
         }
+
+        let uploaded_image = "";
+        document.getElementById("inputId").addEventListener("change", function() {
+
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                // reader.result
+                uploaded_image = reader.result;
+                if (window.innerWidth > 750) {
+                    document.getElementById("image-loader").style.visibility = "visible";
+                }
+            });
+            reader.readAsDataURL(this.files[0]);
+        });
     </script>
 </body>
 
