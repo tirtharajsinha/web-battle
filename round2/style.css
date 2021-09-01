@@ -255,6 +255,22 @@ textarea:focus {
     .entrynote {
         width: 80%;
     }
+    #save-note {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        background-color: rgb(13, 107, 231);
+        border-radius: 30px;
+        color: white;
+        margin: 0px;
+        width: 80px;
+        padding: 7px;
+        padding-left: 58px;
+        transition: all 0.3 ease;
+    }
+    #optionbar {
+        height: 60px;
+    }
 }
 
 .notes {
