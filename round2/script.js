@@ -5,7 +5,7 @@ setTimeout(function() {
     load_notes();
     // document.getElementById("expanded").style.right = "-9000px";
     // document.getElementById("expanded").style.right = "-1000px";
-}, 0000);
+}, 5000);
 
 function save_note() {
     let title = document.getElementById("title").value;
