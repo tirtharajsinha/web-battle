@@ -1,0 +1,398 @@
+.form-signin {
+    width: calc(100%-10px);
+    margin-top: 20px;
+    margin-right: 10px;
+    /* background: rgb(57, 117, 230); */
+    border: 0px solid;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    /* z-index: 10; */
+}
+
+.form-signin:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: translate(-50%, -50%);
+    width: 400%;
+    height: 400%;
+    border-radius: 50%;
+    background-color: #0099ff;
+    animation: animate 6s linear;
+    animation-iteration-count: initial;
+    /* animation-delay: 1s; */
+}
+
+@keyframes animate {
+    0% {
+        width: 0%;
+        height: 0%;
+    }
+    20% {
+        width: 0%;
+        height: 0%;
+    }
+    100% {
+        width: 400%;
+        height: 400%;
+    }
+}
+
+.form-signin:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    width: 400%;
+    height: 400%;
+    border-radius: 50%;
+    background-color: #e2176c;
+    animation: animate 6s linear;
+    animation-iteration-count: initial;
+    /* animation-delay: 1s; */
+    z-index: -1;
+}
+
+@keyframes animate {
+    0% {
+        width: 0%;
+        height: 0%;
+    }
+    20% {
+        width: 0%;
+        height: 0%;
+    }
+    100% {
+        width: 400%;
+        height: 400%;
+    }
+}
+
+.block-head {
+    width: 100%;
+    color: rgb(22, 142, 240);
+    text-align: center;
+    z-index: 10;
+}
+
+.title-block {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    background: linear-gradient( 129deg, rgba(255, 255, 255, 0.7) 46%, rgba(255, 255, 255, 0.96) 72%, rgba(255, 255, 255, 0.7) 100%);
+    backdrop-filter: blur(2px);
+    border: 0px solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.title-block label {
+    color: rgb(33, 104, 236);
+    font-weight: bold;
+}
+
+.title-block input,
+.title-block textarea {
+    background-color: transparent;
+    border-color: rgb(80, 80, 80);
+}
+
+.file-block {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    background: linear-gradient( 129deg, rgba(255, 255, 255, 0.7) 46%, rgba(255, 255, 255, 0.96) 72%, rgba(255, 255, 255, 0.7) 100%);
+    backdrop-filter: blur(2px);
+    border: 0px solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.file-block input {
+    display: none;
+}
+
+.file-block .file-upload {
+    width: 150px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 30px;
+    background: rgb(151, 255, 0);
+    background: linear-gradient( 137deg, rgba(151, 255, 0, 1) 8%, rgba(0, 255, 41, 1) 47%, rgba(89, 200, 18, 1) 77%, rgba(14, 99, 27, 1) 100%);
+    transition: background 0.3s ease;
+}
+
+.file-block .file-upload:hover {
+    background: rgb(255, 196, 0);
+    background: linear-gradient( 22deg, rgba(255, 196, 0, 1) 6%, rgba(194, 255, 0, 1) 54%, rgba(0, 255, 41, 1) 100%);
+}
+
+#blah {
+    display: none;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.btns-block {
+    display: flex;
+    justify-content: center;
+    width: 320px;
+    margin: auto;
+}
+
+.file-block .preview {
+    width: 50%;
+    margin: 0px;
+    height: 50px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border: none;
+    background-color: transparent;
+    color: rgb(238, 12, 99);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px;
+}
+
+.file-block .submit {
+    width: 50%;
+    margin: 0px;
+    height: 50px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: 4px solid rgb(75, 133, 240);
+    background-color: transparent;
+    color: rgb(75, 133, 240);
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.file-block .preview:hover {
+    background-color: rgb(238, 12, 99);
+    color: white;
+    border: 4px solid rgb(238, 12, 99);
+}
+
+.file-block .submit:hover {
+    background-color: rgb(75, 133, 240);
+    color: white;
+    border: 4px solid rgb(75, 133, 240);
+}
+
+@media only screen and (max-width: 600px) {
+    .btns-block {
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        width: 100%;
+    }
+    .file-block .preview,
+    .file-block .submit {
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+    .form-signin .block {
+        width: 100%;
+    }
+}
+
+.headings {
+    color: rgb(24, 95, 228);
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    padding: 50px;
+}
+
+select {
+    font-size: 18px;
+    display: block;
+    margin: auto;
+    width: 50%;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    background-color: rgb(24, 95, 228);
+    color: white;
+}
+
+.result {
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+.result .rimg {
+    display: flex;
+    flex-direction: column;
+}
+
+.rimg p {
+    text-align: center;
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: turquoise;
+}
+
+.rimg img {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.footer {
+    width: 100%;
+    border-top-left-radius: 10px;
+    background-color: rgb(36, 37, 37);
+    color: white;
+    height: 300px;
+    margin-top: 100px;
+    padding-top: 20px;
+    position: relative;
+}
+
+.footer .social {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social a {
+    text-decoration: none;
+    padding: 20px;
+    font-size: 35px;
+    font-weight: 500;
+    display: block;
+    border-radius: 50%;
+    /* background-color: rgb(43, 44, 44); */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer h3 {
+    margin-top: 40px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.footer .foot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(33, 104, 236);
+    height: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .selector {
+        width: 100%;
+    }
+    .form-signin {
+        width: 100%;
+        padding: 0px;
+        padding: 10px;
+    }
+    .social a {
+        padding: 10px;
+        font-size: 25px;
+    }
+}
+
+
+/* ................................................................ */
+
+#cool-hover {
+    width: 120px;
+    height: 120px;
+    display: block;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    margin: 0px auto 24px auto;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+#cool-hover:before {
+    border-radius: inherit;
+    display: block;
+    width: 200%;
+    height: 200%;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #21d4fd 25%, #b721ff 75%);
+    transition: all 0.5s;
+    transform: translate(-25%, -25%);
+    z-index: 0;
+}
+
+.cool-after {
+    border-radius: 9px;
+    display: none;
+    width: 108px;
+    height: 108px;
+    margin: 6px;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Icon-notepad.svg/2048px-Icon-notepad.svg.png");
+    background-size: cover;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#cool-hover:hover:before {
+    transform: translate(-25%, -25%) rotate(-180deg);
+}
+
+#cool-hover:hover {
+    box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset, -8px -8px 12px 0 rgba(0, 0, 0, 0.25) inset;
+}
+
+#cool-hover span {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#test-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

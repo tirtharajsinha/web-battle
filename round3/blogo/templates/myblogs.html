@@ -1,0 +1,29 @@
+{% extends "base.html"%} {% block title %}My blogs{% endblock %}{% block css %}static/css/myblogs.css{% endblock css %}{% block content %}
+<h1 class="headings">Your Creations</h1>
+
+<ul class="serlist">
+    {% if name in myown %}
+    <h4 class="no-pub">You Have not Published any blogs till now</h4>
+    {% endif %} {% for b in myown %}
+    <li>
+        <div class="title-img">
+            <img src="{{b.thumb.url}}" alt="" />
+        </div>
+        <div class="details">
+            <p class="title">{{b.title}}</p>
+            <p class="des">{{b.des}}</p>
+        </div>
+        <div class="button">
+            <a href="/blogs/{{b.id}}">Launch</a>
+            <a href="" style="background-color: tomato">Delete</a>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<script>
+    document.getElementsByClassName("own")[0].classList.add("active");
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+{% endblock %}

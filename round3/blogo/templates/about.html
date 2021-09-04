@@ -1,0 +1,41 @@
+{% extends "base.html"%} {% block title %}About{% endblock %}{% block css %}static/css/about.css{% endblock css %}{% block content %}
+<h1 class="headings">About</h1>
+<h6>version 2.3 primary</h6>
+
+<div class="aboutText">
+    <span>Blogo</span> is a blog webapp for publishing and read blog posts. Main motto of this app is to make knowledge
+    <span>easy accessable</span> and <span>free</span> for all people worldwide. So why are you wasting time here, Go and read some
+    <span> awasome blogs</span>. <br />developed by Tirtharaj Sinha
+    <a href="https://tirtharajsinha.github.io">@tirtharajsinha</a>.
+</div>
+
+<div id="features">
+    <h1>Features</h1>
+    <ul>
+        <li>Access free blogs in one application.</li>
+        <li>No Book means more extra space on your table, access blogs any time on your fav webbrowser.</li>
+        <li>User history and fevorites are saved safely on cloud. <br>So no need to say your friend let me search in browser history at vary time.</li>
+        <li>View and feel your journry towards knoledge heap with stunning visuals.</li>
+    </ul>
+</div>
+
+<div class="footer">
+    <div class="social">
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-youtube"></a>
+    </div>
+    <h3>
+        Blogo is blog post webapp network built by Tirtharaj Sinha<br /> with <i class="fa fa-heart" style="color: red"></i> and effort.
+    </h3>
+    <div class="foot"></div>
+</div>
+
+<script>
+    document.getElementsByClassName("about")[0].classList.add("active");
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/{% block css %}{% endblock css %}" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>{% block title %}{% endblock title %} | Blogo</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <ul>
+            <a href="/dashboard">
+                <li class="fa fa-home dashboard"><span>Dashboard</span></li>
+            </a>
+            <a href="/blogs">
+                <li class="fa fa-newspaper-o blog"><span>Blogs</span></li>
+            </a>
+            <a href="/bookmarked">
+                <li class="fa fa-bookmark bookmarked"><span>bookmarked</span></li>
+            </a>
+            <a href="/upload">
+                <li class="fa fa-paint-brush upload"><span>Creator Panel</span></li>
+            </a>
+            <a href="/myblogs">
+                <li class="fa fa-shopping-bag own"><span>My blogs</span></li>
+            </a>
+            <a href="/about">
+                <li class="fa fa-info-circle about"><span>About</span></li>
+            </a>
+            <a href="/profile">
+                <li class="fa fa-user profile"><span>Profile</span></li>
+            </a>
+            <a href="/logout">
+                <li class="fa fa-sign-out logout"><span>LogOut</span></li>
+            </a>
+            <a href="https://tirtharajsinha.github.io">
+                <li class="fa fa-mobile-phone contact"><span>Contact</span></li>
+            </a>
+            <a href="/deluser">
+                <li class="fa fa-close deluser" style="color: red; display: none"><span>Delete Account</span>
+                </li>
+            </a>
+            <li></li>
+
+        </ul>
+    </div>
+    <div class="container-box">{% block content %}{% endblock %}</div>
+</body>
+
+</html>

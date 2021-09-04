@@ -1,0 +1,31 @@
+{% extends "base.html"%} {% block title %}Bookmarked{% endblock %}{% block css %}static/css/service.css{% endblock css %}{% block content %}
+<h1 class="headings">Your favorites</h1>
+
+<ul class="serlist">
+    {% if name in bookmarks %}
+    <h4 class="no-pub">You Have not Published any blogs till now</h4>
+    {% endif %} {% for b in bookmarks %}
+    <li>
+        <div class="title-img">
+            <img src="{{b.thumb.url}}" alt="" />
+        </div>
+        <div class="details">
+            <p class="title">{{b.title}}</p>
+            <p class="des">{{b.des}}</p>
+        </div>
+        <div class="button">
+            <a href="/blogs/{{b.id}}">Launch</a>
+            <a href="" style="background-color: tomato">Remove</a>
+        </div>
+    </li>
+    {% endfor %}
+
+
+</ul>
+<script>
+    document.getElementsByClassName("bookmarked")[0].classList.add("active");
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+{% endblock %}

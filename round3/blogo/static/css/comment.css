@@ -1,0 +1,164 @@
+#wrapper {
+    width: 100%;
+}
+
+.card {
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.39);
+    /* position: absolute; */
+    /* top: 50%;
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    padding: 1.5rem;
+    width: 90%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.card img {
+    border: 3px solid #3d4399;
+}
+
+.card h4 {
+    color: #737373;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    letter-spacing: -0.1rem;
+    padding-bottom: 0.5rem;
+}
+
+.card textarea {
+    width: 100%;
+    background: #eee;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    resize: none;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.19);
+    border-radius: 2px;
+    margin-bottom: 0.3rem;
+    color: #737373;
+}
+
+.card button {
+    background: #3d4399;
+    color: #fff;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.4rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: light;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.card button:hover {
+    background: #989898;
+    transition: all 1s;
+}
+
+.card ul {
+    border-top: 1px solid #737373;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.card li {
+    list-style: none;
+    display: inline-block;
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+.card li:hover {
+    opacity: 0.4;
+    transition: color 3s;
+}
+
+.card li.like::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f164";
+    visibility: visible;
+    font-weight: 900;
+    padding-left: 5px;
+}
+
+.card li.likeClicked {
+    color: #3d4399;
+}
+
+.card li.likeClicked:hover {
+    opacity: 1;
+    cursor: default;
+}
+
+.card li.reply::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f4ad";
+    visibility: visible;
+    font-weight: 900;
+    padding-left: 5px;
+}
+
+.statusBox {
+    background: #eee;
+    padding: 1rem;
+    animation-name: fadeIn;
+    animation: fadeIn 1.5s;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #737373;
+    margin-top: 15px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+input.removeButton {
+    background: #3d4399;
+    color: #fff;
+    padding: 0.1rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-weight: light;
+    letter-spacing: 2px;
+}
+
+input.removeButton:hover {
+    background: #989898;
+    transition: all 1s;
+}
+
+.shit {
+    background: #eee;
+    padding: 10px;
+}
+
+.deleteComment {
+    float: right;
+    cursor: pointer;
+}
+
+.deleteComment:hover {
+    opacity: 0.3;
+    transition: all 1s;
+}
+
+.deleteComment::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f2ed";
+    visibility: visible;
+    font-weight: 900;
+    float: right;
+    padding-left: 5px;
+}
