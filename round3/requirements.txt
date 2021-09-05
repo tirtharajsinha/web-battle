@@ -1,4 +1,4 @@
 django
-numpy==1.19.3
+django-cleanup
 pillow
 opencv-python
