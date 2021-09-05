@@ -50,19 +50,13 @@ def blogs(request, id=-1):
 def dashboard(request):
     if request.user.is_anonymous:
         return redirect("/login")
-    # username = request.user.username
-    # loaded = Upload.objects.all().filter(username=username)
-    # used = len(list(loaded))
-    # if used > 10:
-    #     imageids = loaded.values_list("id", flat=True)
-    #     print(imageids)
-    #     for i in imageids:
-    #         image = Upload.objects.get(id=i)
-    #         image.delete()
-    # loaded = Upload.objects.all().filter(username=username)
-    # used = len(list(loaded))
-    # return render(request, "dashboard.html")
-    return redirect("/profile")
+    thisuser = str(request.user)
+    details = userdetail.objects.get(username=thisuser)
+    myown = blog.objects.all().filter(username=thisuser).count()
+    saved = bookmark.objects.all().filter(username=thisuser).count()
+    print(myown)
+    return render(request, "dashboard.html", {"details": details, "myown": myown, "saved": saved})
+    # return redirect("/profile")
 
 
 def loginuser(request):

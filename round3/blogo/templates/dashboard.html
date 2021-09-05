@@ -1,7 +1,70 @@
 {% extends "base.html"%} {% block title %}Dashboard{% endblock %}{% block css %}static/css/dashboard.css{% endblock css %}{% block content %}
-<h1 class="headings">Dashboard</h1>
 
-<div class="cont"></div>
+
+
+
+<div class="cont">
+    <div class="page">
+        <div class="left">
+            <div class="topbar">
+                <div class="search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search Blogs ...">
+                </div>
+                <div class="righticon">
+                    <i class="fa fa-bell"></i>
+                    <i class="fa fa-paper-plane"></i>
+                    <i class="fa fa-bars open-card" onclick="open_right()"></i>
+                </div>
+            </div>
+            <div class="box">
+                <div class="main-block">
+                    <p>Hey {{user.username}}, Don't forget to check out new blogs. More blogs are comming soon. 😃</p>
+                    <a href="/blogs" class="main-btn">Check Out</a>
+                </div>
+                <div class="side-block">
+                    <img src="/static/thumbnail/blog-icon.png" alt="">
+                    <p>Publish New blogs , To share your thoughts.</p>
+                </div>
+            </div>
+        </div>
+        <div class="right" id="right">
+            <div class="close-icon" onclick="close_right()">
+                <i class="fa fa-close"></i>
+            </div>
+            <div class="card">{% if details.pic %}
+                <img src="{{details.pic.url}}" alt="" height="200px"> {% else %}
+                <img src="/static/thumbnail/dafault_avatar.png" alt="" height="200px"> {% endif %}
+                <h4>{{user.first_name}} {{user.last_name}}</h4>
+                <div class="activity">
+                    <div class="sm-box">
+                        <p class="val">{{saved}}</p>
+                        <p class="domain">Saved</p>
+                    </div>
+                    <div class="sm-box">
+                        <p class="val">--</p>
+                        <p class="domain">Liked</p>
+                    </div>
+                    <div class="sm-box">
+                        <p class="val">{{myown}}</p>
+                        <p class="domain">posted</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <section class="today-box" id="today-box">
+                <span class="breadcrumb">Today</span>
+                <h3 class="date-title" id="today-date">May 15, 2018</h3>
+
+                <div class="plus-icon">
+                    <i class="fa fa-plus"></i>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
 <div class="footer">
     <div class="social">
         <a href="#" class="fa fa-instagram"></a>
@@ -15,9 +78,50 @@
     <div class="foot"></div>
 </div>
 <script>
+    function open_right() {
+        if (window.innerHeight < 650) {
+            document.getElementById("right").style.top = "50px";
+        } else if (window.innerHeight < 800) {
+            document.getElementById("right").style.top = "80px";
+        } else {
+            document.getElementById("right").style.top = "200px";
+        }
+    }
+
+    function close_right() {
+        document.getElementById("right").style.top = "110vh";
+    }
     document.getElementsByClassName("dashboard")[0].classList.add("active");
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
+
+    let a = new Date();
+    var dd = String(a.getDate()).padStart(
+        2,
+        "0"
+    );
+    var mm = a.getMonth() - 1;
+
+    var month = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+
+    var yy = a.getFullYear();
+
+    let today = month[mm] + " " + dd + ", " + yy;
+    console.log(today);
+    document.getElementById("today-date").innerHTML = today;
 </script>
 {% endblock %}
